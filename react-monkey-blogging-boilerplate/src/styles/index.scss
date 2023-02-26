@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "reset";
+@import "content";
+@layer base {
+  body {
+    @apply font-primary text-base;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.error-container {
+  margin-block: 2rem;
+}
+.error-message {
+  padding: 20px;
+  border-radius: 8px;
+  color: rgb(221, 40, 40);
+  background-color: rgb(240, 201, 201);
+}
+.text-primary {
+  color: #2ebac1;
+}
+
+.home-block {
+  padding-bottom: 40px;
+  @media screen and (min-width: 1024px) {
+    padding-bottom: 60px;
+  }
+}
+.hidden-input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+.form-layout {
+  @apply grid grid-cols-1 lg:grid-cols-2 lg:gap-x-10 mb-5 lg:mb-10;
+}
+
+.quill.sticky {
+  position: relative;
+  .ql-toolbar {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+  }
+}
+
+.skeleton {
+  background-color: #eee;
+  background-image: linear-gradient(
+    110deg,
+    #ececec 8%,
+    #f5f5f5 18%,
+    #ececec 33%
+  );
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+//optimize table
+.table-users {
+  thead {
+    background-color: #f7f7f8;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .table-users {
+    tr {
+      display: grid;
+      grid-template-columns: 10% 30% 15% 20% 10% 15%;
+    }
+    th,
+    td {
+      display: grid;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 1023.98px) {
+  .table-users {
+    @apply border-separate;
+    border-spacing: 0;
+    td:first-child,
+    th:first-child {
+      @apply sticky top-0 z-20 left-0 border-r border-r-gray-100;
+      min-width: 150px;
+    }
+    td:first-child {
+      @apply bg-white;
+    }
+    th:first-child {
+      @apply bg-gray-100;
+    }
+    th,
+    td {
+      @apply border-b border-b-gray-100;
+    }
+  }
+}
